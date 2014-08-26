@@ -1,0 +1,169 @@
+  -- node neurone1sigma5
+node a(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+  -- node neurone1sigma5
+node b(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+  -- node neurone1sigma5
+node d(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+-- 4 neurones a seuil 95
+node w(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node x(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node y(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node z(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 95;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+-- expériences
+
+node simple_S1(Xa:bool; wa:int) returns (S:bool);
+  var mem:bool^3;
+let
+  mem[0] = a(Xa,wa);
+  mem[1] = false -> pre(b(mem[0],10));
+  mem[2] = false -> pre(d(mem[1],10));
+  S = mem[2];
+tel
+
+node simple_S2(Xw:bool; ww:int) returns (S:bool);
+  var mem:bool^4;
+let
+  mem[0] = w(Xw,ww);
+  mem[1] =false -> pre(x(mem[0],10));
+  mem[2] =false -> pre(y(mem[1],10));
+  mem[3] =false -> pre(z(mem[2],10));
+  S = mem[3];
+tel
+
+--Definit un changement de variable de vrai en 1 et de faux en 0
+node bool2int(X:bool) returns (I:int);
+let
+  I= if X then 1 else 0;
+tel
+
+-- on vérifie le décalage de A et B en comparant le compteur de A (Ca) et le compteur de B(Cb) . Si la sortie est vrai on ajoute 1 au compteur.
+
+node obs1 (I:bool; x:int) returns (S:bool) ;
+var A,B:bool;
+    Ca,Cb:int;
+let
+  A = simple_S1 (I,10);
+  B = simple_S2 (I,10);
+  Ca= bool2int(A)-> if A then pre(Ca)+1 else pre(Ca);
+  Cb= bool2int(B)-> if B then pre(Cb)+1 else pre(Cb);
+  S = (Ca-Cb) > x;
+tel
