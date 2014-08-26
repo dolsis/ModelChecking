@@ -1,0 +1,224 @@
+  -- node neurone1sigma5
+node a(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 191;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+  -- node neurone3sigma5
+node c(X0,X1,X2:bool; w0,w1,w2:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^3*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4] + 
+      mem[5] * r[0] + mem[6] * r[1] + mem[7] * r[2] + mem[8] * r[3] + mem[9] * r[4] + 
+      mem[10] * r[0] + mem[11] * r[1] + mem[12] * r[2] + mem[13] * r[3] + mem[14] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+  -- entree 1
+  mem[5] = if X1 then w1 else 0 -> if X1 then w1 else 0;
+  mem[6] = 0 -> pre(mem[5]);
+  mem[7] = 0 -> pre(mem[6]);
+  mem[8] = 0 -> pre(mem[7]);
+  mem[9] = 0 -> pre(mem[8]);
+  -- entree 2
+  mem[10] = if X2 then w2 else 0 -> if X2 then w2 else 0;
+  mem[11] = 0 -> pre(mem[10]);
+  mem[12] = 0 -> pre(mem[11]);
+  mem[13] = 0 -> pre(mem[12]);
+  mem[14] = 0 -> pre(mem[13]);
+tel
+
+
+  -- node neurone1sigma5
+node b(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 191;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+  -- node neurone1sigma5
+node d(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 191;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+  -- node neurone1sigma5
+node e(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+-- 4 neurones a seuil 95
+node w(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 160;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node x(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 160;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node y(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 160;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+node z(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 160;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+-- expériences
+
+
+node simple_network(Xa,Xc,Xb:bool; wa,wc,wb:int) returns (S:bool);
+  var mem:bool^3;
+let
+  mem[0] = a(Xa,wa);
+  mem[1] = b(Xb,wb);
+  mem[2] = c(Xc,mem[0],mem[1],wc,10,10);
+  S = mem[2];
+tel
+
+-- on représente une série simple de neurones a,b,d de seuil 191 et ayant un poid d'entrée de 10. 
+node simple_S1(Xa:bool; wa:int) returns (S:bool);
+  var mem:bool^3;
+let
+  mem[0] = a(Xa,wa);
+  mem[1] = false -> pre(b(mem[0],10));
+  mem[2] = false -> pre(d(mem[1],10));
+  S = mem[2];
+tel
+
+-- on représente une série simple de neurones w,x,y,z de seuil 160 et ayant un poid d'entrée de 9. 
+node simple_S2(Xw:bool; ww:int) returns (S:bool);
+  var mem:bool^4;
+let
+  mem[0] = w(Xw,ww);
+  mem[1] =false -> pre(x(mem[0],9));
+  mem[2] =false -> pre(y(mem[1],9));
+  mem[3] =false -> pre(z(mem[2],9));
+  S = mem[3];
+tel
+
+-- on compare la série 1 avec la 2. Cette propriété rend vrai ssi les deux ont le meme comportement.
+node obs1 (I:bool) returns (OK:bool) ;
+var A,B:bool;
+let
+  A = simple_S1 (I,10);
+  B = simple_S2 (I,09);
+  OK = (A = B) ;--and (A and B);
+tel  
