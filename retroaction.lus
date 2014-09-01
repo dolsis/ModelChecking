@@ -1,0 +1,55 @@
+  -- node neurone2sigma5
+node a(X0,X1:bool; w0,w1:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^2*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4] + 
+      mem[5] * r[0] + mem[6] * r[1] + mem[7] * r[2] + mem[8] * r[3] + mem[9] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+  -- entree 1
+  mem[5] = if X1 then w1 else 0 -> if X1 then w1 else 0;
+  mem[6] = 0 -> pre(mem[5]);
+  mem[7] = 0 -> pre(mem[6]);
+  mem[8] = 0 -> pre(mem[7]);
+  mem[9] = 0 -> pre(mem[8]);
+tel
+
+
+  -- node neurone1sigma5
+node b(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 80;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0 -> if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+node retroaction(Xa:bool; wa:int) returns (S:bool);
+  var mem:bool^2;
+let
+  mem[0] = a(Xa, mem[1], wa, -10);
+  mem[1] = false -> pre(b(mem[0], 10));
+  S = mem[0];
+tel
+
