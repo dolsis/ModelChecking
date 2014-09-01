@@ -17,15 +17,13 @@ let
   mem[4] = 0 -> pre(mem[3]);
 tel
 
-
-  -- node neurone3sigma5
-node c(X0:bool; w0:int) returns (S:bool);
+node b(X0:bool; w0:int) returns (S:bool);
 var  V:int;
      seuil:int;
      mem:int^1*5;
      r:int^5;
 let
-  seuil = 120;
+  seuil = 98;
   r = [10, 5, 3, 2, 1];
   V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
   S = V >= seuil;
@@ -35,12 +33,10 @@ let
   mem[2] = 0 -> pre(mem[1]);
   mem[3] = 0 -> pre(mem[2]);
   mem[4] = 0 -> pre(mem[3]);
- 
 tel
 
-
-  -- node neurone1sigma5
-node b(X0:bool; w0:int) returns (S:bool);
+  -- node neurone3sigma5
+node c(X0:bool; w0:int) returns (S:bool);
 var  V:int;
      seuil:int;
      mem:int^1*5;
@@ -65,7 +61,7 @@ var  V:int;
      mem:int^1*5;
      r:int^5;
 let
-  seuil = 120;
+  seuil = 160;
   r = [10, 5, 3, 2, 1];
   V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
   S = V >= seuil;
@@ -84,7 +80,7 @@ var  V:int;
      mem:int^1*5;
      r:int^5;
 let
-  seuil = 120;
+  seuil = 190;
   r = [10, 5, 3, 2, 1];
   V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
   S = V >= seuil;
@@ -103,7 +99,7 @@ var  V:int;
      mem:int^1*5;
      r:int^5;
 let
-  seuil = 120;
+  seuil = 205;
   r = [10, 5, 3, 2, 1];
   V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
   S = V >= seuil;
@@ -122,7 +118,7 @@ var  V:int;
      mem:int^1*5;
      r:int^5;
 let
-  seuil = 120;
+  seuil = 215;
   r = [10, 5, 3, 2, 1];
   V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
   S = V >= seuil;
@@ -206,13 +202,13 @@ node parallele_2(Xa:bool; wa:int) returns (S:int);
   var mem:bool^9;
 let
   mem[0] = a(Xa,wa);
-  mem[1] = false -> pre(a(mem[0],10));
-  mem[2] = false -> pre(a(mem[0],10));
-  mem[3] = false -> pre(a(mem[0],10));
-  mem[4] = false -> pre(a(mem[0],10));
-  mem[5] = false -> pre(a(mem[0],10));
-  mem[6] = false -> pre(a(mem[0],10));
-  mem[7] = false -> pre(a(mem[0],10));
-  mem[8] = false -> pre(a(mem[0],10));
+  mem[1] = false-> pre(b(mem[0],10));
+  mem[2] = false-> pre(c(mem[0],10));
+  mem[3] = false-> pre(d(mem[0],10));
+  mem[4] = false-> pre(e(mem[0],10));
+  mem[5] = false-> pre(f(mem[0],10));
+  mem[6] = false-> pre(g(mem[0],10));
+  mem[7] = false-> pre(h(mem[0],10));
+  mem[8] = false-> pre(i(mem[0],10));
   S = bool2int(mem[0])+bool2int(mem[1])+bool2int(mem[2])+bool2int(mem[3])+bool2int(mem[4])+bool2int(mem[5])+bool2int(mem[6])+bool2int(mem[7])+bool2int(mem[8]);
 tel
