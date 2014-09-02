@@ -1,0 +1,105 @@
+  -- node neurone1sigma5
+node a(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+  -- node neurone1sigma5
+node b(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+  -- node neurone1sigma5
+node c(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+  -- node neurone1sigma5
+node d(X0:bool; w0:int) returns (S:bool);
+var  V:int;
+     seuil:int;
+     mem:int^1*5;
+     r:int^5;
+let
+  seuil = 120;
+  r = [10, 5, 3, 2, 1];
+  V = mem[0] * r[0] + mem[1] * r[1] + mem[2] * r[2] + mem[3] * r[3] + mem[4] * r[4];
+  S = V >= seuil;
+  -- entree 0
+  mem[0] = if X0 then w0 else 0;
+  mem[1] = 0 -> pre(mem[0]);
+  mem[2] = 0 -> pre(mem[1]);
+  mem[3] = 0 -> pre(mem[2]);
+  mem[4] = 0 -> pre(mem[3]);
+tel
+
+
+node serie_multiple(Xa:bool; wa:int) returns (S:bool^4);
+  var mem:bool^4;
+let
+  mem[0] = a(Xa, wa);
+  mem[1] = false -> pre(b(mem[0], 10));
+  mem[2] = false -> pre(c(mem[1], 10));
+  mem[3] = false -> pre(d(mem[2], 10));
+  S[0] = mem[0];
+  S[2] = mem[2];
+  S[1] = mem[1];
+  S[3] = mem[3];
+tel
+
+node SM1(X:bool; H:int) returns (S:bool);
+var count:int;
+    mem:bool^4;
+let
+  mem[0] = a(X, 10);
+  mem[1] = false -> pre(b(mem[0], 10));
+  mem[2] = false -> pre(c(mem[1], 10));
+  mem[3] = false -> pre(d(mem[2], 10));
+
+  count = 0 -> pre(count) + 1;
+  S = (mem[0] and mem[1] and mem[2] and mem[3]) and count < H;
+tel
